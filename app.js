@@ -35,22 +35,24 @@ app.get("/compose", function(req, res){
   res.render("compose");
 });
 
+app.get("/posts/:postName", function(req, res){
+  let requestedPost = req.params.postName
+  posts.forEach(function(post){
+    let postTitle = post.title
+    if(postTitle === requestedPost){
+      console.log("Match found!")
+    }
+  })
+})
+
 app.post("/compose", function(req, res){
-  
   const newEntry = {
     title: req.body.titleInput,
     content: req.body.postInput
   };
   posts.push(newEntry)
   res.redirect("/")
-  
 })
-
-
-
-
-
-
 
 
 
