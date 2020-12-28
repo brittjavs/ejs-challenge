@@ -40,6 +40,7 @@ app.get("/posts/:postName", function(req, res){
   let requestedPost = loDash.lowerCase(req.params.postName)
   posts.forEach(function(post){
     let postTitle = loDash.lowerCase(post.title)
+    
     if(postTitle === requestedPost){
       res.render("post", {postTitle: post.title, postContent: post.content})
     }
